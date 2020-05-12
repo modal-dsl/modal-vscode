@@ -1,0 +1,44 @@
+{
+    "name": "mdAL",
+    "scopeName": "text.mdal",
+    "fileTypes": [
+        "mdal"
+    ],
+    "repository": {
+        "general": {
+            "patterns": [
+                {
+                    "include": "#linecomment"
+                },
+                {
+                    "include": "#blockcomment"
+                },
+                {
+                    "include": "#keyword"
+                }
+            ]
+        },
+        "linecomment": {
+            "name": "comment.line.double-dash.mdal",
+            "begin": "(^[ \\t]+)?(?=//)",
+            "end": "(?=$)"
+        },
+        "blockcomment": {
+            "name": "comment.block.mdal",
+            "begin": "/\\*(\\*)?(?!/)",
+            "end": "\\*/"
+        },
+        
+        "keyword": {
+            "name": "keyword.control.mdal",
+            "match": "\\b(Hello|from)\\b|!"
+
+        }
+    },
+    "patterns": [
+        {
+            "include": "#general"
+        }
+    ],
+    "uuid": "7b40d766-0d3d-4642-ac2d-585fe96dc90d"
+}

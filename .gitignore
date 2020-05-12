@@ -1,0 +1,19 @@
+# Gradle
+.gradle
+build
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+bin/
+
+# Java
+*.jar
+
+# Node
+node_modules
+
+# VS Code
+*.vsix

@@ -1,0 +1,12 @@
+#Git
+.gitignore
+
+# Gradle
+.gradle/**
+build/**
+*.gradle
+.project
+gradlew
+gradlew.bat
+gradle/
+.settings

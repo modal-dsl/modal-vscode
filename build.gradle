@@ -1,0 +1,119 @@
+buildscript {
+    repositories {
+		jcenter()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath 'com.github.node-gradle:gradle-node-plugin:2.2.3'
+	}
+}
+
+plugins {
+    id "de.undercouch.download" version "4.0.4"
+}
+apply plugin: 'base'
+apply plugin: 'com.github.node-gradle.node'
+
+node {
+	version = '12.16.3'
+	npmVersion = '6.14.5'
+	download = true
+}
+
+project.ext {
+  mdalReleasesUrl = 'https://api.github.com/repos/joneug/mdal/releases/latest'
+}
+
+import groovy.json.JsonSlurper
+
+def packageSlurper = new JsonSlurper()
+def packageJson = packageSlurper.parse file('package.json')
+version = packageJson.version
+
+task downloadMdalRelease(type: Download) {
+    src {
+        def json = new JsonSlurper().parseText((new URL(mdalReleasesUrl)).text)
+        return json['assets'].first()['browser_download_url']
+    }
+    dest new File(temporaryDir, 'mdal.zip')
+    onlyIfModified true
+}
+
+task copyApplication(dependsOn: downloadMdalRelease, type: Sync) {
+    from zipTree(downloadMdalRelease.dest)
+    into 'src/mdal'
+}
+
+def inputFiles = fileTree(
+    dir: projectDir, 
+    excludes: [ 'out/**', '.gitignore', '.gradle/**', 'build/**', '*.gradle' ]
+)
+
+npmInstall {
+    inputs.files(inputFiles)
+    outputs.dir('out')
+}
+
+npmInstall.dependsOn copyApplication
+
+task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
+	ext.destPath = "$rootProject.projectDir/node_modules/vsce" 
+	outputs.dir(destPath)
+	group 'Node'
+	description 'Installs the NodeJS package "Visual Studio Code Extension Manager"'
+	args = [ 'install', 'vsce' ]
+}
+
+plugins.withType(com.moowork.gradle.node.NodePlugin) {
+	node {
+		workDir = file("$rootProject.buildDir/nodejs")
+		nodeModulesDir = rootProject.projectDir
+	}
+}
+
+task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
+    ext.destDir = new File(buildDir, 'vscode')
+    ext.archiveName = "$project.name-${project.version}.vsix"
+    ext.destPath = "$destDir/$archiveName"
+    inputs.with {
+        files inputFiles
+        dir npmInstallVsce.destPath
+    }
+    outputs.dir destDir
+    doFirst {
+        destDir.mkdirs()
+    }
+    script = file("$npmInstallVsce.destPath/out/vsce")
+    args = [ 'package', '--out', destPath ]
+    execOverrides {
+        workingDir = projectDir
+    }
+}
+
+task installExtension(type: Exec, dependsOn: vscodeExtension) {
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        commandLine 'code.cmd'
+    } else {
+        commandLine 'code'
+    }
+    args '--install-extension', vscodeExtension.destPath
+}
+
+task startCode(type:Exec, dependsOn: installExtension) {
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        commandLine 'code.cmd'
+    } else {
+        commandLine 'code'
+    }
+    args '--new-window'
+}
+
+clean {
+    doLast {
+        delete copyApplication.outputs
+        delete vscodeExtension.destDir
+		delete 'out'
+    }
+}
