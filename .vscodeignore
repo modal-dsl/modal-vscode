@@ -1,4 +1,4 @@
-#Git
+# Git
 .gitignore
 
 # Gradle
@@ -10,3 +10,6 @@ gradlew
 gradlew.bat
 gradle/
 .settings
+
+# Source Code
+src/

@@ -31,7 +31,7 @@ task downloadMdalRelease(type: Download) {
 
 task copyApplication(dependsOn: downloadMdalRelease, type: Sync) {
     from zipTree(downloadMdalRelease.dest)
-    into 'src/mdal'
+    into 'mdal'
 }
 
 def inputFiles = fileTree(

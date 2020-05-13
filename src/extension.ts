@@ -8,9 +8,8 @@ import { commands, window, workspace, ExtensionContext, Uri } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
-    // The server is a locally installed in src/mdal
     let launcher = os.platform() === 'win32' ? 'mdal-standalone.bat' : 'mdal-standalone';
-    let script = context.asAbsolutePath(path.join('src', 'mdal', 'bin', launcher));
+    let script = context.asAbsolutePath(path.join('mdal', 'bin', launcher));
 
     let serverOptions: ServerOptions = {
         run : { command: script },
