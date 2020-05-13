@@ -1,5 +1,7 @@
 # `mdAL` VS Code Extension
 
+![Build](https://github.com/joneug/mdal-extension/workflows/Build/badge.svg)
+
 This repository contains the VS Code language extension adding support for [`mdAL`](https://github.com/joneug/mdal). `mdAL` is a Domain Specific Language that enables a Model-Driven approach to extension module development for the ERP System Microsoft Dynamics 365 Business Central.
 
 ## References
