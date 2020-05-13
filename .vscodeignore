@@ -1,6 +1,9 @@
 # Git
 .gitignore
 
+# GitHub
+.github/
+
 # Gradle
 .gradle/**
 build/**
@@ -11,5 +14,9 @@ gradlew.bat
 gradle/
 .settings
 
-# Source Code
+# Node
+node_modules/
+
+# Webpack
+webpack.config.js
 src/
