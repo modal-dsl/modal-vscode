@@ -4,7 +4,7 @@
     "description": "Language Extension adding support for mdAL",
     "version": "0.0.0",
     "publisher": "joneug",
-    "license": "EPL-1.0",
+    "license": "Apache-2.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/joneug/mdal-extension"
@@ -27,29 +27,20 @@
             {
                 "id": "mdal",
                 "aliases": [
-                    "mdAL"
+                    "mdAL",
+                    "mdal"
                 ],
                 "extensions": [
                     ".mdal"
                 ],
-                "configuration": "./mdal.configuration.json"
+                "configuration": "./language-configuration.json"
             }
         ],
         "grammars": [
             {
                 "language": "mdal",
-                "scopeName": "text.mdal",
+                "scopeName": "source.mdal",
                 "path": "./syntaxes/mdal.tmLanguage.json"
-            }
-        ],
-        "commands": [
-            {
-                "command": "mdal.a.proxy",
-                "title": "mdAL Command A"
-            },
-            {
-                "command": "mdal.b",
-                "title": "mdAL Command B"
             }
         ]
     },

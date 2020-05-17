@@ -1,44 +1,32 @@
 {
-    "name": "mdAL",
-    "scopeName": "text.mdal",
-    "fileTypes": [
-        "mdal"
-    ],
-    "repository": {
-        "general": {
-            "patterns": [
-                {
-                    "include": "#linecomment"
-                },
-                {
-                    "include": "#blockcomment"
-                },
-                {
-                    "include": "#keyword"
-                }
-            ]
-        },
-        "linecomment": {
-            "name": "comment.line.double-dash.mdal",
-            "begin": "(^[ \\t]+)?(?=//)",
-            "end": "(?=$)"
-        },
-        "blockcomment": {
-            "name": "comment.block.mdal",
-            "begin": "/\\*(\\*)?(?!/)",
-            "end": "\\*/"
-        },
-        
-        "keyword": {
-            "name": "keyword.control.mdal",
-            "match": "\\b(Hello|from)\\b|!"
-
-        }
-    },
-    "patterns": [
-        {
-            "include": "#general"
-        }
-    ],
-    "uuid": "7b40d766-0d3d-4642-ac2d-585fe96dc90d"
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "mdAL",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.mdal",
+				"match": "\\b(if|while|for|return)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.mdal",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.mdal",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.mdal"
 }
