@@ -29,9 +29,14 @@ task downloadMdalRelease(type: Download) {
     onlyIfModified true
 }
 
-task copyApplication(dependsOn: downloadMdalRelease, type: Sync) {
-    from zipTree(downloadMdalRelease.dest)
-    into 'mdal'
+// task copyApplication(dependsOn: downloadMdalRelease, type: Sync) {
+//     from zipTree(downloadMdalRelease.dest)
+//     into 'mdal'
+// }
+
+task copyApplication(type: Sync) {
+     from zipTree(new File('../mdal/de.joneug.mdal.ide/build/distributions', 'de.joneug.mdal.ide-0.0.0.zip'))
+     into 'mdal'
 }
 
 def inputFiles = fileTree(
@@ -84,7 +89,7 @@ task installExtension(type: Exec, dependsOn: vscodeExtension) {
     if (System.properties['os.name'].toLowerCase().contains('windows')) {
         commandLine 'code.cmd'
     } else {
-        commandLine 'code'
+        commandLine '/usr/local/bin/code'
     }
     args '--install-extension', vscodeExtension.destPath
 }
@@ -93,10 +98,19 @@ task startCode(type:Exec, dependsOn: installExtension) {
     if (System.properties['os.name'].toLowerCase().contains('windows')) {
         commandLine 'code.cmd'
     } else {
-        commandLine 'code'
+        commandLine '/usr/local/bin/code'
     }
-    args '--new-window'
+    args '../mdal-vstest', '--new-window'
 }
+
+task debugCode(type:Exec, dependsOn: vscodeExtension) {
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        commandLine 'code.cmd'
+    } else {
+        commandLine '/usr/local/bin/code'
+    }
+    args "--extensionDevelopmentPath=$rootProject.projectDir", '--inspect-extensions=9993'
+} 
 
 clean {
     doLast {
