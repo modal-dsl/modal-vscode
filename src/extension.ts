@@ -11,11 +11,6 @@ let extension: MdalLanguageExtension | undefined;
 
 export function activate(context: ExtensionContext) {
     extension = new MdalLanguageExtension(context);
-
-    context.subscriptions.push(
-        commands.registerCommand("mdal.clean.proxy", generators.cleanMdal()),
-        commands.registerCommand("mdal.generate.proxy", generators.generateMdal()),
-    );
 }
 
 export function deactivate(): Thenable<void> {
@@ -59,21 +54,11 @@ export class MdalLanguageExtension {
         const languageClient = new LanguageClient('mdalLanguageServer', 'mdAL Language Server', serverOptions, clientOptions);
         const disposable = languageClient.start()
     
-        commands.registerCommand('mdal.show.references', (uri: string, position: LSPosition, locations: LSLocation[]) => {
-            commands.executeCommand('editor.action.showReferences',
-                        Uri.parse(uri),
-                        languageClient.protocol2CodeConverter.asPosition(position),
-                        locations.map(languageClient.protocol2CodeConverter.asLocation));
-        })
-    
-        commands.registerCommand('mdal.apply.workspaceEdit', (obj: any) => {
-            const edit = languageClient.protocol2CodeConverter.asWorkspaceEdit(obj);
-            if (edit) {
-                workspace.applyEdit(edit);
-            }
-        });
-
-        context.subscriptions.push(disposable);
+        context.subscriptions.push(
+            commands.registerCommand("mdal.clean.proxy", generators.cleanMdal()),
+            commands.registerCommand("mdal.generate.proxy", generators.generateMdal()),
+            disposable
+        );
 
         return languageClient;
     }

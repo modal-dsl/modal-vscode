@@ -14,18 +14,22 @@ export function generateMdal(): CommandType {
 
 function generate(command: string, ...additionalParameters: any[]): CommandType {
     return async () => {
-        if (editor.isNotMdalEditor())
+        if (editor.isNotMdalEditor() || !editor.documentHasURI())
             return;
 
-        if (editor.documentHasURI()) {
-            console.log(`Sending command ${command} to mdAL language server.`);
+        if((await commands.getCommands()).filter(it => it === command).length === 0) {
+            window.showErrorMessage(`The mdAL Language Server is not ready yet. Please wait a few seconds and try again.`);
+            return;
+        }
 
-            const returnVal: string = await commands.executeCommand(command, window.activeTextEditor.document.uri.toString(), additionalParameters);
-            if (returnVal.startsWith(RETURN_PREFIX.ERROR)) {
-                window.showErrorMessage(returnVal.replace(RETURN_PREFIX.ERROR, ''));
-            } else {
-                window.showInformationMessage(returnVal.replace(RETURN_PREFIX.SUCCESS, ''));
-            }
+        console.log(`Sending command "${command}" to mdAL language server.`);
+        const returnVal: string = await commands.executeCommand(command, window.activeTextEditor.document.uri.toString(), additionalParameters);
+        console.log(`Received return value "${returnVal}" from mdAL language server.`);
+
+        if (returnVal.startsWith(RETURN_PREFIX.ERROR)) {
+            window.showErrorMessage(returnVal.replace(RETURN_PREFIX.ERROR, ''));
+        } else {
+            window.showInformationMessage(returnVal.replace(RETURN_PREFIX.SUCCESS, ''));
         }
     };
 }
