@@ -42,7 +42,29 @@
                 "scopeName": "source.mdal",
                 "path": "./syntaxes/mdal.tmLanguage.json"
             }
-        ]
+        ],
+        "commands": [
+            {
+                "command": "mdal.generate",
+                "title": "mdAL: Generate"
+            },
+            {
+                "command": "mdal.clean",
+                "title": "mdAL: Clean"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "mdal.generate",
+                    "when": "editorLangId == mdal"
+                },
+                {
+                    "command": "mdal.clean",
+                    "when": "editorLangId == mdal"
+                }
+            ]
+        }
     },
     "devDependencies": {
         "@types/node": "^14.0.1",
