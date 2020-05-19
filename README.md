@@ -7,4 +7,4 @@ This repository contains the VS Code language extension adding support for [`mdA
 
 ## References
 
-The project structure was setup according to the [example](https://github.com/itemis/xtext-languageserver-example) provided by itemis. Read more about the underlying concepts in the accompanying [blog post](https://blogs.itemis.com/en/integrating-xtext-language-support-in-visual-studio-code).
+The project structure was setup according to the [example](https://github.com/itemis/xtext-languageserver-example) provided by itemis. Read more about the underlying concepts in the accompanying [blog post](https://blogs.itemis.com/en/integrating-xtext-language-support-in-visual-studio-code). Further concepts for integrating an Xtext DSL into VS Code can be found in the language extensions for [YANG](https://github.com/theia-ide/yang-vscode) and [Context Mapper](https://github.com/ContextMapper/vscode-extension).

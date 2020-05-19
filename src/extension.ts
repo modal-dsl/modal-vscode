@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * Adopted from:
- * - https://github.com/theia-ide/yang-vscode
- *  - https://github.com/eclipse/sprotty-vscode
- */
-
 import * as path from 'path';
 import * as os from 'os';
 
