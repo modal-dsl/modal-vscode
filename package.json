@@ -45,23 +45,29 @@
         ],
         "commands": [
             {
-                "command": "mdal.generate",
-                "title": "mdAL: Generate"
+                "command": "mdal.generate.proxy",
+                "title": "Generate AL Code",
+                "category": "mdAL",
+                "when": "editorLangId == mdal"
             },
             {
-                "command": "mdal.clean",
-                "title": "mdAL: Clean"
+                "command": "mdal.clean.proxy",
+                "title": "Clean",
+                "category": "mdAL",
+                "when": "editorLangId == mdal"
             }
         ],
         "menus": {
-            "commandPalette": [
+            "editor/context": [
                 {
-                    "command": "mdal.generate",
-                    "when": "editorLangId == mdal"
+                    "command": "mdal.clean.proxy",
+                    "group": "mdalGenerators@1",
+                    "when": "resourceLangId == mdal"
                 },
                 {
-                    "command": "mdal.clean",
-                    "when": "editorLangId == mdal"
+                    "command": "mdal.generate.proxy",
+                    "group": "mdalGenerators@2",
+                    "when": "resourceLangId == mdal"
                 }
             ]
         }

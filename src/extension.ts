@@ -11,11 +11,17 @@ import * as os from 'os';
 
 import { workspace, commands, Uri, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, Position as LSPosition, Location as LSLocation } from 'vscode-languageclient';
+import * as generators from "./commands/generators";
 
 let extension: MdalLanguageExtension | undefined;
 
 export function activate(context: ExtensionContext) {
     extension = new MdalLanguageExtension(context);
+
+    context.subscriptions.push(
+        commands.registerCommand("mdal.clean.proxy", generators.cleanMdal()),
+        commands.registerCommand("mdal.generate.proxy", generators.generateMdal()),
+    );
 }
 
 export function deactivate(): Thenable<void> {
