@@ -1,32 +1,25 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"scopeName": "source.mdal",
 	"name": "mdAL",
+	"fileTypes": ["mdal"],
 	"patterns": [
 		{
-			"include": "#keywords"
+			"name": "keyword.control.mdal",
+			"match": "(?<=[^\\w-]|^)(solution|master|supplemental|documentHeader|documentLine|journal|field|fields)(?=[^\\w-]|$)"
 		},
 		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.mdal",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
+			"name": "keyword.other.mdal",
+			"match": "(?<=[^\\w-]|^)(true|false|Address|ContactInfo|Dimensions|BigInteger|Blob|Boolean|Code|Date|DateTime|Decimal|Enum|Guid|Integer|Text|Time)(?=[^\\w-]|$)"
 		},
-		"strings": {
-			"name": "string.quoted.double.mdal",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.mdal",
-					"match": "\\\\."
-				}
-			]
+		{
+			"name": "string.quoted.single.mdal",
+			"begin": "'",
+			"end": "'"
+		},
+		{
+			"name": "comment.line.mdal",
+			"match": "//.+"
 		}
-	},
-	"scopeName": "source.mdal"
+	]
 }
