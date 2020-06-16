@@ -6,6 +6,7 @@ import * as os from 'os';
 import { workspace, commands, Uri, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, Position as LSPosition, Location as LSLocation } from 'vscode-languageclient';
 import * as generators from "./commands/generators";
+import { PROXY_COMMAND } from "./commands/command"
 
 let extension: MdalLanguageExtension | undefined;
 
@@ -55,8 +56,8 @@ export class MdalLanguageExtension {
         const disposable = languageClient.start()
     
         context.subscriptions.push(
-            commands.registerCommand("mdal.clean.proxy", generators.cleanMdal()),
-            commands.registerCommand("mdal.generate.proxy", generators.generateMdal()),
+            commands.registerCommand(PROXY_COMMAND.CLEAN, generators.cleanMdal()),
+            commands.registerCommand(PROXY_COMMAND.GENERATE, generators.generateMdal()),
             disposable
         );
 
