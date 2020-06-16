@@ -3,8 +3,8 @@
 import * as path from 'path';
 import * as os from 'os';
 
-import { workspace, commands, Uri, ExtensionContext } from 'vscode';
-import { LanguageClient, LanguageClientOptions, ServerOptions, Position as LSPosition, Location as LSLocation } from 'vscode-languageclient';
+import { workspace, commands, ExtensionContext } from 'vscode';
+import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
 import * as generators from "./commands/generators";
 import { PROXY_COMMAND } from "./commands/command"
 
