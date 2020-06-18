@@ -33,17 +33,17 @@ export class MdalLanguageExtension {
     protected activateLanguageClient(context: ExtensionContext): LanguageClient {
         const executable = os.platform() === 'win32' ? 'mdal-ls.bat' : 'mdal-ls';
         const serverModule = context.asAbsolutePath(path.join('mdal', 'bin', executable));
-    
+
         const serverOptions: ServerOptions = {
-            run : { 
+            run: {
                 command: serverModule
             },
-            debug: { 
+            debug: {
                 command: serverModule,
                 args: ['-log', '-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y', '-Xmx256m']
             }
         };
-        
+
         const clientOptions: LanguageClientOptions = {
             documentSelector: ['mdal'],
             synchronize: {
@@ -51,10 +51,10 @@ export class MdalLanguageExtension {
                 fileEvents: workspace.createFileSystemWatcher('**/*.mdal')
             }
         };
-        
+
         const languageClient = new LanguageClient('mdalLanguageServer', 'mdAL Language Server', serverOptions, clientOptions);
         const disposable = languageClient.start()
-    
+
         context.subscriptions.push(
             commands.registerCommand(PROXY_COMMAND.CLEAN, generators.cleanMdal()),
             commands.registerCommand(PROXY_COMMAND.GENERATE, generators.generateMdal()),
