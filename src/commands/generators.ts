@@ -25,8 +25,10 @@ function getProgressMessage(command: string) {
 
 function generate(command: string, ...additionalParameters: any[]): CommandType {
     return async () => {
-        if (editor.isNotMdalEditor() || !editor.documentHasURI())
+        if (editor.isNotMdalEditor() || !editor.documentHasURI()) {
+            window.showWarningMessage(`This command can only be used with mdAL files.`);
             return;
+        }
 
         if((await commands.getCommands()).filter(it => it === command).length === 0) {
             window.showWarningMessage(`The mdAL Language Server is not ready yet. Please wait a few seconds and try again.`);

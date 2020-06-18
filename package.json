@@ -19,7 +19,9 @@
         "Programming Languages"
     ],
     "activationEvents": [
-        "onLanguage:mdal"
+        "onLanguage:mdal",
+        "onCommand:mdal.generate.proxy",
+        "onCommand:mdal.clean.proxy"
     ],
     "main": "out/extension",
     "contributes": {
