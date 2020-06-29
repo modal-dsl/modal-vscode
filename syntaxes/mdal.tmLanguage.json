@@ -6,11 +6,11 @@
 	"patterns": [
 		{
 			"name": "keyword.control.mdal",
-			"match": "(?<=[^\\w-]|^)(solution|master|supplemental|documentHeader|documentLine|journal|field|fields|template)(?=[^\\w-]|$)"
+			"match": "(?<=[^\\w\"'-]|^)(solution|master|supplemental|document|header|line|journal|field|fields|template|include)(?=[^\\w\"'-]|$)"
 		},
 		{
 			"name": "keyword.other.mdal",
-			"match": "(?<=[^\\w-]|^)(true|false|Boolean|Integer|BigInteger|Decimal|Code|Text|Date|Time|DateTime|Guid|Blob|Enum|Option|Media|MediaSet|DateFormula|Duration|RecordId|TableFilter|GenProductPostingGroup|Dimensions|Address|ContactInfo)(?=[^\\w-]|$)"
+			"match": "(?<=[^\\w\"'-]|^)(true|false|Boolean|Integer|BigInteger|Decimal|Code|Text|Date|Time|DateTime|Guid|Blob|Enum|Option|Media|MediaSet|DateFormula|Duration|RecordId|TableFilter)(?=[^\\w\"'-]|$)"
 		},
 		{
 			"name": "string.quoted.single.mdal",
