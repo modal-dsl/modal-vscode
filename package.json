@@ -57,6 +57,12 @@
                 "title": "Clean",
                 "category": "mdAL",
                 "when": "editorLangId == mdal"
+            },
+            {
+                "command": "mdal.loadSymbolReferences.proxy",
+                "title": "Load symbol references",
+                "category": "mdAL",
+                "when": "editorLangId == mdal"
             }
         ],
         "menus": {

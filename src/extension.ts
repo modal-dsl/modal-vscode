@@ -5,8 +5,8 @@ import * as os from 'os';
 
 import { workspace, commands, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
-import * as generators from "./commands/generators";
-import { PROXY_COMMAND } from "./commands/command"
+import * as command from "./command";
+import { PROXY_COMMAND } from "./command"
 
 let extension: MdalLanguageExtension | undefined;
 
@@ -45,7 +45,8 @@ export class MdalLanguageExtension {
         };
 
         const clientOptions: LanguageClientOptions = {
-            documentSelector: ['mdal'],
+            //documentSelector: ['mdal'],
+            documentSelector: [{ scheme: 'file', language: 'mdal' }],
             synchronize: {
                 configurationSection: 'mdalLanguageServer',
                 fileEvents: workspace.createFileSystemWatcher('**/*.mdal')
@@ -56,8 +57,11 @@ export class MdalLanguageExtension {
         const disposable = languageClient.start()
 
         context.subscriptions.push(
-            commands.registerCommand(PROXY_COMMAND.CLEAN, generators.cleanMdal()),
-            commands.registerCommand(PROXY_COMMAND.GENERATE, generators.generateMdal()),
+            // Command Palette / Menu commands
+            commands.registerCommand(PROXY_COMMAND.CLEAN, command.cleanMdal()),
+            commands.registerCommand(PROXY_COMMAND.GENERATE, command.generateMdal()),
+            // Code Action Commands
+            commands.registerCommand(PROXY_COMMAND.LOAD_SYMBOL_REFERENCES, command.loadSymbolReferences()),
             disposable
         );
 
