@@ -40,12 +40,12 @@ export class MdalLanguageExtension {
             },
             debug: {
                 command: serverModule,
-                args: ['-log', '-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y', '-Xmx256m']
+                args: ['-log'],
+                options: { env: Object.assign({ JAVA_OPTS:"-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y"}, process.env) }
             }
         };
 
         const clientOptions: LanguageClientOptions = {
-            //documentSelector: ['mdal'],
             documentSelector: [{ scheme: 'file', language: 'mdal' }],
             synchronize: {
                 configurationSection: 'mdalLanguageServer',
