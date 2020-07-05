@@ -33,6 +33,11 @@ export class MdalLanguageExtension {
     protected activateLanguageClient(context: ExtensionContext): LanguageClient {
         const executable = os.platform() === 'win32' ? 'mdal-ls.bat' : 'mdal-ls';
         const serverModule = context.asAbsolutePath(path.join('mdal', 'bin', executable));
+        
+        let args = []
+        if(workspace.getConfiguration('mdal').get('ls.log')) {
+            args = ['-log']
+        }
 
         const serverOptions: ServerOptions = {
             run: {
@@ -40,7 +45,7 @@ export class MdalLanguageExtension {
             },
             debug: {
                 command: serverModule,
-                args: ['-log'],
+                args: args,
                 options: { env: Object.assign({ JAVA_OPTS:"-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y"}, process.env) }
             }
         };
@@ -48,12 +53,12 @@ export class MdalLanguageExtension {
         const clientOptions: LanguageClientOptions = {
             documentSelector: [{ scheme: 'file', language: 'mdal' }],
             synchronize: {
-                configurationSection: 'mdalLanguageServer',
+                configurationSection: 'mdal',
                 fileEvents: workspace.createFileSystemWatcher('**/*.mdal')
             }
         };
 
-        const languageClient = new LanguageClient('mdalLanguageServer', 'mdAL Language Server', serverOptions, clientOptions);
+        const languageClient = new LanguageClient('mdal', 'mdAL Language Server', serverOptions, clientOptions);
         const disposable = languageClient.start()
 
         context.subscriptions.push(

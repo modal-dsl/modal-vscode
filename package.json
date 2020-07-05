@@ -78,6 +78,29 @@
                     "when": "resourceLangId == mdal"
                 }
             ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "mdAL",
+            "properties": {
+                "mdal.trace.server": {
+                    "scope": "window",
+                    "type": "string",
+                    "enum": [
+                        "off",
+                        "messages",
+                        "verbose"
+                    ],
+                    "default": "off",
+                    "description": "Traces the communication between VS Code and the language server."
+                },
+                "mdal.ls.log": {
+                    "scope": "window",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Shows logs of the language server. This setting is only active in debug mode."
+                }
+            }
         }
     },
     "devDependencies": {
