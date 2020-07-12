@@ -2,7 +2,7 @@
     "name": "mdal",
     "displayName": "mdAL",
     "description": "Language Extension adding support for mdAL",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "publisher": "joneug",
     "license": "Apache-2.0",
     "repository": {
