@@ -40,7 +40,11 @@ jobs:
           asset_path: ${{ env.ASSET_PATH }}
           asset_name: ${{ env.ASSET_NAME }}
           asset_content_type: application/vsix
-      - name: Publish Asset on Visual Studio Marketplace
+      - name: Publish Extension to Visual Studio Marketplace
         env:
           VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
-        run: ./gradlew publish
+        run: ./gradlew publishVSM
+      - name: Publish Extension to Open VSX Registry
+        env:
+          VSCE_TOKEN: ${{ secrets.OVSX_TOKEN }}
+        run: ./gradlew publishOVSX
