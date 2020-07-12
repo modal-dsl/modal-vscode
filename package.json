@@ -2,6 +2,15 @@
     "name": "mdal",
     "displayName": "mdAL",
     "description": "Language Extension adding support for mdAL",
+    "keywords": [
+        "mdAL",
+        "AL",
+        "Dynamics 365 Business Central",
+        "ERP",
+        "Domain-specific Language",
+        "DSL"
+    ],
+    "preview": true,
     "version": "0.1.0",
     "publisher": "joneug",
     "license": "Apache-2.0",
