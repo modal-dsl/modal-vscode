@@ -121,3 +121,11 @@ clean {
 }
 
 build.dependsOn vscodeExtension
+
+task publish(dependsOn: vscodeExtension, type: NodeTask) {
+    script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
+    args = [ 'publish', '-p', System.getenv('VSCE_TOKEN'), "--packagePath", "${project.buildDir}/vscode/mdal-extension-${project.version}.vsix"]
+    execOverrides {
+        workingDir = projectDir
+    }
+}
