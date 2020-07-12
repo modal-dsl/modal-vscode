@@ -46,5 +46,5 @@ jobs:
         run: ./gradlew publishVSM
       - name: Publish Extension to Open VSX Registry
         env:
-          VSCE_TOKEN: ${{ secrets.OVSX_TOKEN }}
+          OVSX_TOKEN: ${{ secrets.OVSX_TOKEN }}
         run: ./gradlew publishOVSX
