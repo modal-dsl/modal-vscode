@@ -100,7 +100,7 @@ task startCode(type:Exec, dependsOn: installExtension) {
     } else {
         commandLine '/usr/local/bin/code'
     }
-    args '../mdal-vstest', '--new-window'
+    args '--new-window'
 }
 
 task debugCode(type:Exec, dependsOn: vscodeExtension) {
