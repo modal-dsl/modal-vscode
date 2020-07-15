@@ -6,7 +6,7 @@
 	"patterns": [
 		{
 			"name": "keyword.control.mdal",
-			"match": "(?<=[^\\w\"'-]|^)(solution|master|supplemental|document|header|line|journal|field|fields|template|include)(?=[^\\w\"'-]|$)"
+			"match": "(?<=[^\\w\"'-]|^)(solution|master|supplemental|document|header|line|ledgerEntry|field|fields|template|include|group|cardPage|documentPage|listPartPage|listPage)(?=[^\\w\"'-]|$)"
 		},
 		{
 			"name": "keyword.other.mdal",
