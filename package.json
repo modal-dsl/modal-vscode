@@ -16,10 +16,10 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/joneug/mdal-extension"
+        "url": "https://github.com/mdal-lang/mdal-extension"
     },
     "bugs": {
-        "url": "https://github.com/joneug/mdal-extension/issues"
+        "url": "https://github.com/mdal-lang/mdal-extension/issues"
     },
     "engines": {
         "vscode": "^1.45.0"
