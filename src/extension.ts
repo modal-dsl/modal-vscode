@@ -41,7 +41,8 @@ export class MdalLanguageExtension {
 
         const serverOptions: ServerOptions = {
             run: {
-                command: serverModule
+                command: serverModule,
+                options: { env: Object.assign({ JAVA_OPTS:"-Xmx1024m"}, process.env) }
             },
             debug: {
                 command: serverModule,
