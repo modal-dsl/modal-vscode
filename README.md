@@ -33,6 +33,7 @@ To start using `mdAL` [create a new AL project](https://docs.microsoft.com/en-us
 * Code Actions
 * Content Assist
 * Documentation hovers
+* Snippets
 
 If you encounter errors or have suggestions for future releases, please open an [issue](https://github.com/mdal-lang/mdal-extension/issues).
 
