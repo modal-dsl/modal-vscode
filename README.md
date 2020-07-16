@@ -11,7 +11,7 @@ To use the `mdAL` VS Code extension you need [Java JRE 8](https://www.java.com/d
 
 ## Quickstart
 
-To quickly familiarize yourself with `mdAL` and the VS Code extension have a look at the [`mdAL` demo project](https://github.com/mdal-lang/mdal-demo).
+To quickly familiarize yourself with `mdAL` and the VS Code extension have a look at the [`mdAL` demo project](https://github.com/mdal-lang/mdal-demo). For more information on `mdAL` visit [mdal-lang.github.io](https://mdal-lang.github.io/#/).
 
 ![Extension Demo](images/extension-demo.gif)
 
