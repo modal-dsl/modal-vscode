@@ -7,7 +7,7 @@ This repository contains the VS Code language extension adding support for [`mdA
 
 ## System Requirements
 
-To use the `mdAL` VS Code extension you need [Java JRE 8](https://www.java.com/de/download/) or newer.
+To use the `mdAL` VS Code extension you need [Java JRE 8](https://www.java.com/de/download/) or newer (please restart after installing Java JRE).
 
 ## Quickstart
 
