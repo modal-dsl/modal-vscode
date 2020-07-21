@@ -10,6 +10,7 @@
         "Domain-specific Language",
         "DSL"
     ],
+    "icon": "images/icon.png",
     "preview": true,
     "version": "0.2.0",
     "publisher": "joneug",
