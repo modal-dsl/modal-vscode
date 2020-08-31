@@ -11,7 +11,7 @@ node {
 }
 
 project.ext {
-  mdalReleasesUrl = 'https://api.github.com/repos/mdal-lang/mdal/releases/tags/v0.2.1'
+  mdalReleasesUrl = 'https://api.github.com/repos/mdal-lang/mdal/releases/tags/v0.3.0'
 }
 
 import groovy.json.JsonSlurper
@@ -35,7 +35,7 @@ task copyApplication(dependsOn: downloadMdalRelease, type: Sync) {
 }
 
 task copyApplicationLocal(type: Sync) {
-    from zipTree(new File('../mdal/de.joneug.mdal.ide/build/distributions', 'de.joneug.mdal.ide-0.2.1.zip'))
+    from zipTree(new File('../mdal/de.joneug.mdal.ide/build/distributions', 'de.joneug.mdal.ide-0.3.0.zip'))
     into 'mdal'
 }
 
@@ -124,12 +124,12 @@ build.dependsOn vscodeExtension
 
 task publishVSM(dependsOn: vscodeExtension, type: NodeTask) {
     script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
-    args = [ 'publish', '-p', System.getenv('VSCE_TOKEN'), "--packagePath", "${project.buildDir}/vscode/mdal-extension-${project.version}.vsix"]
+    args = [ 'publish', '-p', System.getenv('VSCE_TOKEN'), "--packagePath", "${project.buildDir}/vscode/mdal-vscode-${project.version}.vsix"]
     execOverrides {
         workingDir = projectDir
     }
 }
 
 task publishOVSX(dependsOn: vscodeExtension, type: Exec) {
-    commandLine 'npx', 'ovsx', 'publish', "${project.buildDir}/vscode/mdal-extension-${project.version}.vsix", '-p', System.getenv('OVSX_TOKEN')
+    commandLine 'npx', 'ovsx', 'publish', "${project.buildDir}/vscode/mdal-vscode-${project.version}.vsix", '-p', System.getenv('OVSX_TOKEN')
 }

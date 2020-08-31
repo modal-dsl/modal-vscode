@@ -1,7 +1,7 @@
 # `mdAL` VS Code Extension
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mdal-lang/mdal-extension/Build)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/mdal-lang/mdal-extension)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mdal-lang/mdal-vscode/Build)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/mdal-lang/mdal-vscode)
 
 This repository contains the VS Code language extension adding support for [`mdAL`](https://github.com/mdal-lang/mdal). `mdAL` is a Domain Specific Language that enables a Model-Driven approach to extension module development for the ERP System Microsoft Dynamics 365 Business Central. `mdAL` stands for **m**odel-**d**riven **AL**.
 
@@ -35,7 +35,7 @@ To start using `mdAL` [create a new AL project](https://docs.microsoft.com/en-us
 * Documentation hovers
 * Snippets
 
-If you encounter errors or have suggestions for future releases, please open an [issue](https://github.com/mdal-lang/mdal-extension/issues).
+If you encounter errors or have suggestions for future releases, please open an [issue](https://github.com/mdal-lang/mdal-vscode/issues).
 
 ## Development
 
