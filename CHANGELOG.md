@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.3.1] - 2020-09-21
+
+### Changed
+
+* Update to `mdAL` release [0.3.1](https://github.com/mdal-lang/mdal/releases/tag/v0.3.1)
+
 ## [0.3.0] - 2020-08-31
 
 ### Changed
