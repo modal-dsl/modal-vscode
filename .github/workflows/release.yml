@@ -18,8 +18,8 @@ jobs:
         run: ./gradlew build
       - name: Set up Environment Variables
         run: |
-          echo "::set-env name=ASSET_PATH::$(ls build/vscode/*.vsix | head -1)"
-          echo "::set-env name=ASSET_NAME::$(cd build/vscode/ && ls *.vsix | head -1)"
+          echo "ASSET_PATH=$(ls build/vscode/*.vsix | head -1)" >> $GITHUB_ENV
+          echo "ASSET_NAME=$(cd build/vscode/ && ls *.vsix | head -1)" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
