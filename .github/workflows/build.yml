@@ -20,4 +20,4 @@ jobs:
           java-version: 11
       - uses: actions/checkout@v2
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew build --info

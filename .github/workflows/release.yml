@@ -15,7 +15,7 @@ jobs:
           java-version: 11
       - uses: actions/checkout@v2
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew build --info
       - name: Set up Environment Variables
         run: |
           echo "ASSET_PATH=$(ls build/vscode/*.vsix | head -1)" >> $GITHUB_ENV
@@ -43,8 +43,8 @@ jobs:
       - name: Publish Extension to Visual Studio Marketplace
         env:
           VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
-        run: ./gradlew publishVSM
+        run: ./gradlew publishVSM --info
       - name: Publish Extension to Open VSX Registry
         env:
           OVSX_TOKEN: ${{ secrets.OVSX_TOKEN }}
-        run: ./gradlew publishOVSX
+        run: ./gradlew publishOVSX --info
