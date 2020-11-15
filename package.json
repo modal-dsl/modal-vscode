@@ -11,8 +11,7 @@
         "DSL"
     ],
     "icon": "images/icon.png",
-    "preview": true,
-    "version": "0.3.1",
+    "version": "0.3.2",
     "publisher": "joneug",
     "license": "Apache-2.0",
     "repository": {
