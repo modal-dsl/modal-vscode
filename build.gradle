@@ -11,7 +11,7 @@ node {
 }
 
 project.ext {
-  mdalReleasesUrl = 'https://api.github.com/repos/mdal-lang/mdal/releases/tags/v0.3.1'
+  mdalReleasesUrl = 'https://api.github.com/repos/mdal-lang/mdal/releases/tags/v0.4.0'
 }
 
 import groovy.json.JsonSlurper
